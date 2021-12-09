@@ -1,0 +1,14 @@
+.container-cards{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 50px;
+    padding: 0px 10px 0px 20px;
+    justify-content: center;
+    backdrop-filter:blur(7.5px); 
+    
+}
+.card-link{
+    height: 565px;
+
+}
