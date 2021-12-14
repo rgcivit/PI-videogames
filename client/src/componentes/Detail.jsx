@@ -30,7 +30,7 @@ export default function Detail(){
                 <img src={ myVgame.background_image} alt= '' width='500px' height='700px'/>
                 <h3>Rating:{myVgame.rating}</h3>
                 <ul> <h3>Generos:</h3>{!myVgame.createdInDb? myVgame.genres.map(el => el.name ).join(' - '):myVgame.genres.map(el => el.name ).join(' - ')}</ul>
-                 <h3>Fecha de Lanzamiento:</h3>{myVgame.released}
+                <h3>Fecha de Lanzamiento:</h3>{myVgame.released}
                  <ul> <h3>Plataformas:</h3>{myVgame.platforms.map(el => el.platform.name + ' ')}</ul>
                  <h3> Descripción:</h3>{myVgame.description_raw === '' ? (
 					<p className="">No se encontro una descipcion</p>

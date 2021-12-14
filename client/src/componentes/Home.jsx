@@ -84,7 +84,7 @@ return (
             <div className='card-link'>
             <Link to={'/videogame/' + el.id} style={{textDecoration:'none' , color:'black'} }>
             <Card name={el.name} background_image={el.background_image} rating={el.rating}
-             genres={el.genres}  released={el.released} key={el.id}/>
+             genres={el.genres} released={el.released} key={el.id}/>
             </Link>
             </div>
             )
