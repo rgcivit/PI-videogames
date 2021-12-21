@@ -3,7 +3,7 @@ import "./Paginado.css"
 
 export default function Paginado({vgamesPerPage, allVgames, paginado}){
     const pageNumbers=[]
-    for(let i=1; i<=Math.floor(allVgames/vgamesPerPage);i++){
+    for(let i=1; i<=Math.ceil(allVgames/vgamesPerPage);i++){
         pageNumbers.push(i)
     }
     return (

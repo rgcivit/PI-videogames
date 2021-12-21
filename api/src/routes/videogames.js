@@ -1,13 +1,9 @@
 const { Router } = require('express');
-const{Videogame, Genre}= require('../db')
-const {getAllVgames}= require('../Controlador/functionController');
-const { default: axios } = require('axios');
-
-
 const router = Router();
+const {getAllVgames}= require('../controllers/videogames');
 
 
-router.get('/', async(req, res)=>{ //Busqueda por nombre
+router.get('/', async(req, res)=>{ //Busqueda por videogames y por  nombre.
     
     const name = req.query.name;
     let vgamesTotal = await getAllVgames();
@@ -21,42 +17,6 @@ router.get('/', async(req, res)=>{ //Busqueda por nombre
         res.status(200).send(vgamesTotal);
     }
 
-  })
+  });
 
-  router.post('/', async(req, res)=>{
-      let{
-        
-        name,
-        background_image,
-        description,
-        released,
-        rating,
-        createdInDb,
-        platforms,
-        genres,
-      } =req.body;
-
-      let vgamesCreated = await Videogame.create({
-         
-          name,
-          background_image,
-          description,
-          released,
-          rating,
-          platforms,
-          createdInDb,
-
-      })
-      let genreDb = await Genre.findAll({
-          where:{name:genres}
-      })
-      vgamesCreated.addGenre(genreDb);
-      res.send('Videojuego creado con éxito')
-
-  })
-    
-  
-
-  
-
-    module.exports = router;
+      module.exports = router;

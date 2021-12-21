@@ -1,11 +1,16 @@
 
 const axios = require('axios')
-const{Videogame, Genre}= require('../db')
+const{Videogame, Genre,Platform}= require('../db')
 const {API_KEY} = process.env
 
 
-const  getApiInfo = async (req, res, next) => {
-    try {
+const  getApiInfo = async () => {
+
+try {
+  
+
+
+  
     let gamesPageOne = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`)
 
     let gamesPageTwo = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=2`)
@@ -33,51 +38,56 @@ const  getApiInfo = async (req, res, next) => {
                 id: results.id,
                 name: results.name,
                 released: results.released,
-                description:results.description,
                 background_image: results.background_image,
                 rating: results.rating,
                 platforms: results.platforms.map(e => e.platform.name),
-                genres: results.genres.map(e => e.name),
+                Genres: results.genres.map(e => e.name),
                 
             }      
         })
         
+        //console.log(apiInfo, 'hola!!!!')
     return apiInfo;
-} catch (error) {
-  console.log(error)
-   
-}
-};
+  } catch (error) {
+    console.log(error)
+  }
 
+};
 
 const getDbInfo = async ()=>{
  try {
-     return await Videogame.findAll({
+ 
+    return await Videogame.findAll({
         include:{
-        model :Genre,
-        attributes:['name'],
-        through:{
-            attributes:[],
-        },
-    }
-})
-} catch (error) {
+            model:Genre,Platform,
+            attributes:['name'],
+            through:{
+                attributes:[],
+            }
+        }
+    });
+      
+ } catch (error) {
    console.log(error)
 }
-
-
-}
+   };
 
 const getAllVgames = async ()=>{
+  try {
     const apiInfo = await getApiInfo();
     const  dbInfo = await getDbInfo();
     const infoTotal = apiInfo.concat(dbInfo);
-   
-    
+    //console.log(infoTotal)
     return infoTotal;
-}
+  } catch (error) {
+    console.log(error)
+  }
+  }
+
+
 module.exports={
     getAllVgames,
+    getApiInfo,
+    getDbInfo,
    
-} 
-    
+};

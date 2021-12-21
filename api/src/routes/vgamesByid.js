@@ -1,7 +1,7 @@
-const { Router } = require('express');
 const {API_KEY} = process.env
 const{default: axios}= require ('axios')
 const{Videogame, Genre,Platform}= require('../db')
+const { Router } = require('express');
 const router = Router();
 
 router.get('/:id', async(req, res)=>{

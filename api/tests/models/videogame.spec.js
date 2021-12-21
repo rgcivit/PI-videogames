@@ -20,3 +20,20 @@ describe('Videogame model', () => {
     });
   });
 });
+
+describe('Validator Root 2', ()=> {
+  beforeEach(() => Genre.sync({force:true}));
+  describe('name', ()=> {
+    it('should throw an error if name ies null', (done) => {
+      Genre.create({})
+        .then(()=> done (new Error('it requires a valid name')))
+        .catch(() => done())
+    });
+    it('should work when its a valid name', ()=> {
+      Genre.create({name: 'action'});
+    });
+    it('name should be a string', ()=> {
+      expect(typeof Genre.name).equal('string');
+    })
+  })
+})

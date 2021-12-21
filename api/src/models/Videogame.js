@@ -16,20 +16,21 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     description:{
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull:false,
     },
-    released:{
+    releaseDate:{
       type: DataTypes.STRING,
       allowNull: false,
 
     }, 
     rating:{
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
+      allowNull:true
     },
     background_image:{
       type:DataTypes.STRING,
-      allowNull:false
+      allowNull:true
     },
     createdInDb:{
       type: DataTypes.BOOLEAN,

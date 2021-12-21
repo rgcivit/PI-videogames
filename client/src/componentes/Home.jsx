@@ -3,7 +3,7 @@ import React from 'react';
 import{ useState, useEffect} from 'react';
 //importo los hooks de react-redux (previamente los instalo npm i react-redux)
 import {useDispatch, useSelector} from 'react-redux';
-import { getVgames, filterCreated, sortvgames} from "../actions";
+import { getVgames, filterCreated,getPlatforms, sortvgames} from "../actions";
 //importo los componentes que voy a usar
 import {Link} from 'react-router-dom';
 import Card from './Card';
@@ -16,19 +16,27 @@ import SearchBar from './SearchBar';
 export default function Home (){
    const dispatch = useDispatch();
    const allVgames =useSelector((state)=> state.videogames)
-   const [currentPage, setCurrentPage]= useState(1)
+
+  const [currentPage, setCurrentPage]= useState(1)
    const [vgamesPerPage]= useState(15)
    const [orden, setOrden] =useState('')
-   const indexOfLastVgames= currentPage * vgamesPerPage
-   const indexOfFirstVgames = indexOfLastVgames - vgamesPerPage
+
+   const indexOfLastVgames= currentPage * vgamesPerPage//15
+   const indexOfFirstVgames = indexOfLastVgames - vgamesPerPage//0
    const currentVgames = allVgames.slice(indexOfFirstVgames, indexOfLastVgames)
-   
+   console.log(currentVgames)
    const paginado = (pageNumber) =>{
        setCurrentPage(pageNumber)
    }
    
 useEffect(()=>{
     dispatch(getVgames());
+    dispatch(getPlatforms());
+},[dispatch])
+
+useEffect(()=>{
+    dispatch(getVgames());
+    dispatch(getPlatforms());
 },[dispatch])
 
 function handleClick(e){
@@ -47,10 +55,10 @@ function handleSort(e){
 
 return (
     <div>
-    <Link to = '/creategame'>Crear videogame</Link>
-    <h1> PI VIDEOGAMES </h1>
-    <button onClick={e=> {handleClick(e)}}>
-        volver a cargar todos los videogames
+        <h1 className='title-card'>VIDEOGAMES PAGE </h1>
+    <Link to = '/creategame'><h6 className='vgame-create'>Crear Juego!</h6> </Link>
+    <button  className='Indivgame'onClick={e=> {handleClick(e)}}>
+        volver a cargar todos los Juegos
     </button>
     <br />
     <div>
@@ -83,8 +91,13 @@ return (
             
             <div className='card-link'>
             <Link to={'/videogame/' + el.id} style={{textDecoration:'none' , color:'black'} }>
-            <Card name={el.name} background_image={el.background_image} rating={el.rating}
-             genres={el.genres} released={el.released} key={el.id}/>
+            <Card name={el.name} 
+             background_image={el.background_image} 
+             rating={el.rating}
+             genres={!currentVgames[0].createdInDb? el.Genres: 
+             currentVgames[0].genres.map((el)=>el.name).join(' - ')}  
+             released={el.released} 
+             key={el.id}/>
             </Link>
             </div>
             )

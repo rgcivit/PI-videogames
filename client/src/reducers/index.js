@@ -88,7 +88,7 @@ function rootReducer(state= initialState, action){
                                     ...state,
                                 }
                             case 'GET_DETAILS':
-                                console.log(action.data)
+                               
                                 return {
                                     ...state,
                                     detail:action.payload

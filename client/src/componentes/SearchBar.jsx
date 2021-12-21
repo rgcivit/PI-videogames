@@ -20,7 +20,7 @@ export default function SearchBar(){
         <div>
             <input 
             type="text"
-            placeholder= 'Buscar...'
+            placeholder= 'Buscar...' required
             onChange = {(e) => handleImputChange(e)}
             />
             <button type='submit' onClick={ (e) => handleSubmit(e)}>Buscar</button>
