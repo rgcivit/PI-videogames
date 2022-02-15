@@ -58,21 +58,33 @@ return (
         <h1 className='title-card'>VIDEOGAMES PAGE </h1>
     <Link to = '/creategame'><h6 className='vgame-create'>Crear Juego!</h6> </Link>
     <button  className='Indivgame'onClick={e=> {handleClick(e)}}>
-        volver a cargar todos los Juegos
+        Volver a cargar todos los Juegos
     </button>
-    <br />
+    <br/>
+    <br/>
     <div>
-        <select onChange={e=> handleSort(e)}>
-            <option value="asc">Ascendente</option>
-            <option value="desc">Descendentet</option>
+      
+        <select className='Filtervgame' onChange={e=> {handleSort(e)}}>
+            <option  value="asc">Ascendente</option>
+            <option value="desc">Descendente</option>
             <option value="rating">Rating</option>
-            </select>
-        <select onChange={e=> handleFilterCreated(e)}>
+        </select>
+
+        <select className='Filtervgame2' onChange={e=> handleFilterCreated(e)}>
             <option value="All">All</option>
            <option value="created">Created</option>
             <option value="api">Apigames</option>
-        </select>
-        
+        </select >
+        <br />
+        <br />
+        <div className="">
+            <button className="" type='submit'>Genres Filter</button>
+            <input 
+            className=""
+            type="text"
+            placeholder= 'Buscar...' required
+            />
+        </div>
         <Paginado
         vgamesPerPage = {vgamesPerPage}
         allVgames = {allVgames.length}
@@ -108,4 +120,3 @@ return (
      </div>
 )
 }
-

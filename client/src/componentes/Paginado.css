@@ -1,27 +1,33 @@
 
-paginado css
 
 .boton-paginado {
-    border: 4px solid;
-    border: white;
-    background-color: #DC472F;
-    color: white;
-    font-size: 15px;
+    font-family: 'Press Start 2P';
+    font-size: larger;
+    width: 80px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: coral;
+    color:black
+    
+    
 }
 
 .boton-paginado:active {
-    background-color: black;
-    color: white;
+    background-color: rgb(182, 50, 50);
+    color: rgb(24, 216, 33);
 }
 
 .boton-paginado:hover:not(.active) {
-    background-color: rgb(77, 41, 41);
+    background-color: black;
+    color:coral
 }
 
 .div-paginado {
-    display: flex;
-    justify-content: center;
-    padding: 40px;
+    display:inline-flex;
+    justify-content:center;
+    padding: 20px;
+
+ 
+    
+    
 }
-
-

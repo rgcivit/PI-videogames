@@ -2,6 +2,9 @@ import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getNameVgames } from '../actions';
+import './SearchBar.css'
+
+
 
 export default function SearchBar(){
     const dispatch = useDispatch()
@@ -15,15 +18,19 @@ export default function SearchBar(){
     function handleSubmit(e){
         e.preventDefault()
         dispatch(getNameVgames(name))
+        alert("Videojuego Encontrado!!");
+          
+        
     }
     return (
-        <div>
+        <div className="searchbar-div">
             <input 
+            className="bar-btn"
             type="text"
             placeholder= 'Buscar...' required
             onChange = {(e) => handleImputChange(e)}
             />
-            <button type='submit' onClick={ (e) => handleSubmit(e)}>Buscar</button>
+            <button className="btn" type='submit' onClick={ (e) => handleSubmit(e)}>Buscar</button>
         </div>
     )
 }
