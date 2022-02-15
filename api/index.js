@@ -36,13 +36,13 @@ conn.sync({ force: false }).then(async () => {
       const pedido  = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`);
       // Cuando tengo los generos, los formateo.
       
-      const formateo = pedido.data.results?.map((gen) => {
+      //const formateo = pedido.data.results?.map((gen) => {
         return{
           id:gen.id,
           name: gen.name,
           
         }
-      })
+     // })
       // console.log(formateo);
       // Por último, los creo en la base de datos.
       // bulkCreate ---> recibe un arreglo y crea una fila por cada uno.

@@ -1,4 +1,4 @@
-    .title-create{
+.title-create{
     font-family: 'Fuzzy Bubbles', cursive;
     color: rgb(31, 44, 192);
     font-size: 50px;
@@ -17,9 +17,48 @@
         font-size: 15px;
         font-family:  'Fuzzy Bubbles', cursive;
         color: rgb(127, 179, 228);
+        border-radius: 10px;
+        padding: 0px 5px 0px 5px;
     }
     label{
         color: rgb(17, 17, 158);
         font-size: 20px;
         font-family: 'Fuzzy Bubbles', cursive;
+       
     }
+    .remove-genres-platforms{
+        color: rgb(17,17,158);
+        font-size: 20px;
+        font-family: 'Fuzzy Bubbles', cursive;
+       
+    }
+    p{
+        font-size: 20px;
+        font-family:  'Fuzzy Bubbles', cursive;
+        color: rgb(238, 8, 27);
+        display: inline-flex;
+     
+    }
+    .form-create{
+        display:inline-table;
+        flex-direction:inherit;
+        justify-content:right;
+        text-decoration:none;
+        text-align: center;
+        padding:50px;
+        border: 0.5px solid gray;
+        border-radius: 18%;
+        font-size: 25px;
+        font-weight: 50;
+        backdrop-filter:blur(7.5px); 
+        font-family: 'Quicksand', sans-serif;
+        box-shadow: 5px 1px 10px rgba(0,0,0,0.2);
+        transition: all 250ms ease;
+        background-color: black;
+        
+        
+    }
+    .img{
+        border-radius: 10px;
+        padding: 10px 5px 10px 5px;
+      }

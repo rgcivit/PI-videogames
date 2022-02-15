@@ -106,7 +106,7 @@ import './VgamesCreate.css'
         <button className="bot-vgame" >Volver</button>
        </Link>
        <h1 className="title-create" >Creá tu Propio Videojuego!</h1>
-       <form onSubmit={(e) => handleSubmit(e)}>
+       <form className="form-create" onSubmit={(e) => handleSubmit(e)}>
          <div>
            <label>Nombre:</label>
            <input
@@ -164,41 +164,55 @@ import './VgamesCreate.css'
              </p>
            )}
          </div>
-         <label>Género:</label>
-         <select onChange={(e) => handleGenSelect(e)}>
+         <label >Género:</label>
+         <div className="img">
+         <select  onChange={(e) => handleGenSelect(e)}>
            {genres.map((gen) => (
              <option value={gen.name}>{gen.name}</option>
            ))}
          </select>
-         <li>{input.genres.map((el) => el).join(' - ')}</li>
+         </div>
+         <li >{input.genres.map((el) => el).join(' - ')}</li>
          <label > Plataforma:</label>
+         <div className="img">
          <select onChange={(e) => handlePlatSelect(e)}>
            {platforms.map((plat) => (
              <option value={plat.name}>{plat.name}</option>
-           ))}
+             ))}
          </select>
+         </div>
          <li>{input.platforms.map((el) => el).join(' - ')}</li>
          <br />
          <br />
-         <button type="submit">Crear Videojuego</button>
+         <div className="img">
+         <button  type="submit">Crear Videojuego</button>
+         </div>
        </form>
+       <br />
+       <br />
+       <div className="form-create">
+       <h2 className="remove-genres-platforms">Remove Platforms:</h2>
           {input.platforms.map((el) => (
-         <div className="divPlat">
-           <p>{el}</p>
-           <button className="botonX" onClick={() => handleDelete(el)}>
-             x
+         <div>
+           <button  onClick={() => handleDelete(el)}>
+            X
            </button>
+           <p> {el}</p>
+           
          </div>
        ))}
+       <h2 className="remove-genres-platforms">Remove Genres:</h2>
+        
         {input.genres.map((el) => (
-         <div className="divGen">
+         <div>
+           <button onClick={() => handleDelete(el)}>
+            X
+          </button>
            <p>{el}</p>
-           <button className="botonX" onClick={() => handleDelete(el)}>
-             x
-           </button>
          </div>
+        
        ))}
-       
+        </div>
      </div>
    );
  }
