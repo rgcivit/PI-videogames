@@ -78,11 +78,11 @@ return (
         <br />
         <br />
         <div className="">
-            <button className="" type='submit'>Genres Filter</button>
+            <button className="" type='submit'>Buscar</button>
             <input 
             className=""
             type="text"
-            placeholder= 'Buscar...' required
+            placeholder= 'Genres Filter...' required
             />
         </div>
         <Paginado
