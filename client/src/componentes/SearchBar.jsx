@@ -17,8 +17,7 @@ export default function SearchBar(){
     }
     function handleSubmit(e){
         e.preventDefault()
-        dispatch(getNameVgames(name))
-        alert("Videojuego Encontrado!!");
+        dispatch(getNameVgames(name));
           
         
     }
@@ -27,7 +26,7 @@ export default function SearchBar(){
             <input 
             className="bar-btn"
             type="text"
-            placeholder= 'Buscar...' required
+            placeholder= 'Videogame...' required
             onChange = {(e) => handleImputChange(e)}
             />
             <button className="btn" type='submit' onClick={ (e) => handleSubmit(e)}>Buscar</button>

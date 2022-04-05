@@ -20,6 +20,7 @@
 const server = require('./src/app.js')
 const { conn, Genre } = require('./src/db.js')
 const axios = require('axios');
+const { portalSuspended } = require('pg-protocol/dist/messages');
 const { API_KEY } = process.env;
 
 // Syncing all the models at once.
@@ -36,21 +37,22 @@ conn.sync({ force: false }).then(async () => {
       const pedido  = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`);
       // Cuando tengo los generos, los formateo.
       
-      //const formateo = pedido.data.results?.map((gen) => {
+      const formateo = pedido.data.results.map((gen) => {
         return{
           id:gen.id,
-          name: gen.name,
+          name:gen.name,
+          
           
         }
-     // })
-      // console.log(formateo);
+      })
+      console.log(formateo);
       // Por último, los creo en la base de datos.
       // bulkCreate ---> recibe un arreglo y crea una fila por cada uno.
       const carga = await Genre.bulkCreate(formateo);
       console.log("Pre-carga de Genre lista !");
     }
 
-  server.listen(3001, () => {
-    console.log('Listening at 3001') // eslint-disable-line no-console
-  })
-})
+    server.listen(process.env.PORT, () => {
+      console.log("%s listening at 3001"); // eslint-disable-line no-console
+    });
+  });

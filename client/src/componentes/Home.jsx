@@ -3,7 +3,7 @@ import React from 'react';
 import{ useState, useEffect} from 'react';
 //importo los hooks de react-redux (previamente los instalo npm i react-redux)
 import {useDispatch, useSelector} from 'react-redux';
-import { getVgames, filterCreated,getPlatforms, sortvgames} from "../actions";
+import { getVgames, filterCreated,getPlatforms, sortvgames, getGenres} from "../actions";
 //importo los componentes que voy a usar
 import {Link} from 'react-router-dom';
 import Card from './Card';
@@ -32,20 +32,18 @@ export default function Home (){
 useEffect(()=>{
     dispatch(getVgames());
     dispatch(getPlatforms());
-},[dispatch])
-
-useEffect(()=>{
-    dispatch(getVgames());
-    dispatch(getPlatforms());
+    dispatch(getGenres());
 },[dispatch])
 
 function handleClick(e){
     e.preventDefault();
     dispatch(getVgames());
 }
+
 function handleFilterCreated(e){
     dispatch(filterCreated(e.target.value))
 }
+
 function handleSort(e){
     dispatch(sortvgames(e.target.value))
     setCurrentPage(1);
@@ -77,7 +75,7 @@ return (
         </select >
         <br />
         <br />
-        <div className="">
+        <div>
             <button className="" type='submit'>Buscar</button>
             <input 
             className=""
@@ -106,7 +104,7 @@ return (
             <Card name={el.name} 
              background_image={el.background_image} 
              rating={el.rating}
-             genres={!currentVgames[0].createdInDb? el.Genres: 
+             genres={!currentVgames[0].createdInDb? el.Genres.join(' || '): 
              currentVgames[0].genres.map((el)=>el.name).join(' - ')}  
              released={el.released} 
              key={el.id}/>
