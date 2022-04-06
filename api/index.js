@@ -29,7 +29,7 @@ conn.sync({ force: false }).then(async () => {
   // Todo lo que se haga aca, se va a realizar antes de levantar el servidor !
   // Precargar generos.
 
-    const verificacion = await Genre.findAll();
+    const verificacion = await Genre.findAll()
   // Verificar si no hay nada en la db.
     if(verificacion.length < 1) {   // si es menor a uno no tiene contenido.
       // Si no hay nada en e DB, pido los episodios a la API.
