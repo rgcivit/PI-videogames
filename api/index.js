@@ -52,7 +52,7 @@ conn.sync({ force: true }).then(async () => {
       console.log("Pre-carga de Genre lista !");
     }
 
-    server.listen(process.env.PORT, () => {
+    server.listen(3001, () => {
       console.log("%s listening at 3001"); // eslint-disable-line no-console
     });
   });
