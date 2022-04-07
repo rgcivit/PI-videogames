@@ -29,7 +29,7 @@ export function getNameVgames (name){
             payload:json.data
             
         })
-        console.log(json.data)
+       
     } catch (error) {
         console.log(error)
     }
