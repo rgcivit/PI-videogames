@@ -25,7 +25,7 @@ const { API_KEY } = process.env;
 
 // Syncing all the models at once.
 // Force : false ---> guarda en la DB, no reinicia al levantar de nuevo el servidor !
-conn.sync({ force: true }).then(async () => {
+conn.sync({ force: false }).then(async () => {
   // Todo lo que se haga aca, se va a realizar antes de levantar el servidor !
   // Precargar generos.
 
@@ -53,6 +53,6 @@ conn.sync({ force: true }).then(async () => {
     }
 
     server.listen(process.env.PORT, () => {
-      console.log("%s listening at 3000"); // eslint-disable-line no-console
+      console.log("%s listening at 3001"); // eslint-disable-line no-console
     });
   });
