@@ -20,6 +20,7 @@
 const server = require('./src/app.js')
 const { conn, Genre } = require('./src/db.js')
 const axios = require('axios');
+const { portalSuspended } = require('pg-protocol/dist/messages');
 const { API_KEY } = process.env;
 
 // Syncing all the models at once.
@@ -28,29 +29,30 @@ conn.sync({ force: false }).then(async () => {
   // Todo lo que se haga aca, se va a realizar antes de levantar el servidor !
   // Precargar generos.
 
-    const verificacion = await Genre.findAll();
+    const verificacion = await Genre.findAll()
   // Verificar si no hay nada en la db.
     if(verificacion.length < 1) {   // si es menor a uno no tiene contenido.
       // Si no hay nada en e DB, pido los episodios a la API.
       // Lo cargo.
-      const pedido  = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`);
+      const pedido  = await axios.get(`https://api.rawg.io/api/genres?key=1f80e4e3429e49be97733f8f8eedce1d`);
       // Cuando tengo los generos, los formateo.
       
-      //const formateo = pedido.data.results?.map((gen) => {
+      const formateo = pedido.data.results.map((gen) => {
         return{
           id:gen.id,
-          name: gen.name,
+          name:gen.name,
+          
           
         }
-     // })
-      // console.log(formateo);
+      })
+      console.log(formateo);
       // Por último, los creo en la base de datos.
       // bulkCreate ---> recibe un arreglo y crea una fila por cada uno.
       const carga = await Genre.bulkCreate(formateo);
       console.log("Pre-carga de Genre lista !");
     }
 
-  server.listen(3001, () => {
-    console.log('Listening at 3001') // eslint-disable-line no-console
-  })
-})
+    server.listen(process.env.PORT, () => {
+      console.log("%s listening at 3000"); // eslint-disable-line no-console
+    });
+  });

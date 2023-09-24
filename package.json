@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "node": "12.18.3"
+  },
+  "dependencies": {
+    "nodemon": "^2.0.15"
   }
 }

@@ -4,6 +4,8 @@ body{
     background-size: cover;
     background-attachment: fixed;
     box-sizing: border-box;
+   
+     
 }
 
 .boton{
@@ -33,4 +35,10 @@ body{
   font-style: oblique;
   font-family: 'Exo', sans-serif;
   color: #5277bd;
+}
+@media screen and (max-width:600px) {
+  body{
+    background-size: 390px;
+    
+  }
 }

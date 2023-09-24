@@ -67,3 +67,20 @@
         height: 565px;
     
     }
+    @media screen and (max-width:600px){
+        .Indivgame{
+            font-size: 10px;
+        }
+    }
+    @media screen and (max-width:600px){
+        .Filtervgame{
+            font-size: 10px;
+        }
+    }
+    @media screen and (max-width:600px){
+        .Filtervgame2{
+            font-size: 10px;
+        }
+    }
+   
+  
