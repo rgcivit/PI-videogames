@@ -3,7 +3,7 @@ import React from 'react';
 import{ useState, useEffect} from 'react';
 //importo los hooks de react-redux (previamente los instalo npm i react-redux)
 import {useDispatch, useSelector} from 'react-redux';
-import { getVgames, filterCreated,getPlatforms, sortvgames} from "../actions";
+import { getVgames, filterCreated,getPlatforms, sortvgames,getGenres, getNameGenres, filterGenre} from "../actions";
 //importo los componentes que voy a usar
 import {Link} from 'react-router-dom';
 import Card from './Card';
@@ -16,6 +16,7 @@ import SearchBar from './SearchBar';
 export default function Home (){
    const dispatch = useDispatch();
    const allVgames =useSelector((state)=> state.videogames)
+   const genres = useSelector((state) => state.genres);
 
   const [currentPage, setCurrentPage]= useState(1)
    const [vgamesPerPage]= useState(15)
@@ -32,12 +33,23 @@ export default function Home (){
 useEffect(()=>{
     dispatch(getVgames());
     dispatch(getPlatforms());
+    dispatch (getGenres());
 },[dispatch])
 
 useEffect(()=>{
     dispatch(getVgames());
     dispatch(getPlatforms());
+    dispatch (getGenres());
 },[dispatch])
+const [input, setInput] = useState({
+    name: "",
+    description: "",
+    releaseDate: "",
+    rating: "",
+    genres: [],
+    platforms: [],
+    background_image: "",
+  });
 
 function handleClick(e){
     e.preventDefault();
@@ -46,6 +58,13 @@ function handleClick(e){
 function handleFilterCreated(e){
     dispatch(filterCreated(e.target.value))
 }
+
+
+function handleGenSelect(e) {
+   e.preventDefault();
+   dispatch(getNameGenres(e.target.value))
+
+  }
 function handleSort(e){
     dispatch(sortvgames(e.target.value))
     setCurrentPage(1);
@@ -70,21 +89,21 @@ return (
             <option value="rating">Rating</option>
         </select>
 
-        <select className='Filtervgame2' onChange={e=> handleFilterCreated(e)}>
+        <select className='Filtervgame2' onChange={e=> handleGenSelect(e)}>
             <option value="All">All</option>
            <option value="created">Created</option>
             <option value="api">Apigames</option>
         </select >
-        <br />
-        <br />
-        <div className="">
-            <button className="" type='submit'>Buscar</button>
-            <input 
-            className=""
-            type="text"
-            placeholder= 'Genres Filter...' required
-            />
+        <br>
+        </br>
+        <br>
+        </br>
+
         </div>
+         <label className='filtergenres' >Filter Generes:</label>
+         <div className="img">
+     
+         </div>
         <Paginado
         vgamesPerPage = {vgamesPerPage}
         allVgames = {allVgames.length}
@@ -106,7 +125,7 @@ return (
             <Card name={el.name} 
              background_image={el.background_image} 
              rating={el.rating}
-             genres={!currentVgames[0].createdInDb? el.Genres: 
+             genres={!currentVgames[0].createdInDb? el.Genres.join(' - '): 
              currentVgames[0].genres.map((el)=>el.name).join(' - ')}  
              released={el.released} 
              key={el.id}/>
@@ -117,6 +136,6 @@ return (
     }
     </div>
     </div>
-     </div>
+     
 )
 }

@@ -11,6 +11,12 @@
      color: rgb(74, 240, 9);
      
     }
+    .filtergenres{
+        font-family: 'Fuzzy Bubbles',Georgia, 'Times New Roman', Times, serif;
+        font-size: 25px;
+        color: rgba(6, 74, 244, 0.814);
+        font-style: oblique;
+    }
     
     
     .container-cards{
