@@ -8,7 +8,7 @@ const getGenres = async (req, res) => {
       `https://api.rawg.io/api/genres?key=1f80e4e3429e49be97733f8f8eedce1d`
       
     );
-    console.log(response, 'responseeeee')
+    //console.log(response, 'responseeeee')
     const genres = response.data.results;
     genres.forEach(async (g) => {
       await Genre.findOrCreate({
@@ -20,7 +20,7 @@ const getGenres = async (req, res) => {
     });
     
     const allGenres = await Genre.findAll();
-    console.log(allGenres, 'genresssss')
+    //console.log(allGenres, 'genresssss')
     
     res.status(200).json(allGenres);
   } catch (err) {

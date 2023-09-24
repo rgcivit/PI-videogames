@@ -46,7 +46,7 @@ try {
             }      
         })
         
-        console.log(apiInfo, 'hola!!!!')
+        //console.log(apiInfo, 'hola!!!!')
     return apiInfo;
   } catch (error) {
     console.log(error)
@@ -77,7 +77,7 @@ const getAllVgames = async ()=>{
     const apiInfo = await getApiInfo();
     const  dbInfo = await getDbInfo();
     const infoTotal = apiInfo.concat(dbInfo);
-    //console.log(infoTotal)
+   // console.log(infoTotal, 'info total!!!')
     return infoTotal;
   } catch (error) {
     console.log(error)
