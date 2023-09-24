@@ -3,7 +3,7 @@ import React from 'react';
 import{ useState, useEffect} from 'react';
 //importo los hooks de react-redux (previamente los instalo npm i react-redux)
 import {useDispatch, useSelector} from 'react-redux';
-import { getVgames, filterCreated,getPlatforms, sortvgames} from "../actions";
+import { getVgames, getPlatforms, sortvgames} from "../actions";
 //importo los componentes que voy a usar
 import {Link} from 'react-router-dom';
 import Card from './Card';
@@ -54,9 +54,7 @@ function handleClick(e){
     dispatch(getVgames());
 }
 
-function handleFilterCreated(e){
-    dispatch(filterCreated(e.target.value))
-}
+
 function handleSort(e){
     dispatch(sortvgames(e.target.value))
     setCurrentPage(1);
@@ -74,6 +72,7 @@ return (
     <br/>
     <br/>
     <div>
+        </div>
       
         <select className='Filtervgame' onChange={e=> {handleSort(e)}}>
             <option  value="asc">Ascendente</option>
@@ -81,11 +80,7 @@ return (
             <option value="rating">Rating</option>
         </select>
 
-        <select className='Filtervgame2' onChange={e=> handleGenSelect(e)}>
-            <option value="All">All</option>
-           <option value="created">Created</option>
-            <option value="api">Apigames</option>
-        </select >
+       
         <br />
         <br />
         <div className="">
