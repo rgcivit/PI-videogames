@@ -34,7 +34,7 @@ conn.sync({ force: false }).then(async () => {
     if(verificacion.length < 1) {   // si es menor a uno no tiene contenido.
       // Si no hay nada en e DB, pido los episodios a la API.
       // Lo cargo.
-      const pedido  = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`);
+      const pedido  = await axios.get(`https://api.rawg.io/api/genres?key=1f80e4e3429e49be97733f8f8eedce1d`);
       // Cuando tengo los generos, los formateo.
       
       const formateo = pedido.data.results.map((gen) => {
