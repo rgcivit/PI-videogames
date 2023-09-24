@@ -15,6 +15,6 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_VIDEOGAMES_RGC }}'
+          firebaseServiceAccount: '${ secrets.FIREBASE_SERVICE_ACCOUNT_VIDEOGAMES_RGC }'
           channelId: live
           projectId: videogames-rgc

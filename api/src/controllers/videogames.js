@@ -11,15 +11,15 @@ try {
 
 
   
-    let gamesPageOne = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`)
+    let gamesPageOne = axios.get(`https://api.rawg.io/api/games?key=1f80e4e3429e49be97733f8f8eedce1d`)
 
-    let gamesPageTwo = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=2`)
+    let gamesPageTwo = axios.get(`https://api.rawg.io/api/games?key=1f80e4e3429e49be97733f8f8eedce1d&page=2`)
 
-    let gamesPageThree = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=3`)
+    let gamesPageThree = axios.get(`https://api.rawg.io/api/games?key=1f80e4e3429e49be97733f8f8eedce1d&page=3`)
 
-    let gamesPageFour = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=4`)
+    let gamesPageFour = axios.get(`https://api.rawg.io/api/games?key=1f80e4e3429e49be97733f8f8eedce1d&page=4`)
 
-    let gamesPageFive = axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page=5`)
+    let gamesPageFive = axios.get(`https://api.rawg.io/api/games?key=1f80e4e3429e49be97733f8f8eedce1d&page=5`)
 
     
 
@@ -46,7 +46,7 @@ try {
             }      
         })
         
-        //console.log(apiInfo, 'hola!!!!')
+        console.log(apiInfo, 'hola!!!!')
     return apiInfo;
   } catch (error) {
     console.log(error)
