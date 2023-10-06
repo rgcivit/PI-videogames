@@ -20,7 +20,7 @@ const getGenres = async (req, res) => {
     });
     
     const allGenres = await Genre.findAll();
-    //console.log(allGenres, 'genresssss')
+   // console.log(allGenres, 'genresssss')
     
     res.status(200).json(allGenres);
   } catch (err) {

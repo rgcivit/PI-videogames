@@ -7,7 +7,7 @@ const getPlatforms = async (req, res) => {
     const platformsApi = await axios.get(
       `https://api.rawg.io/api/platforms?key=1f80e4e3429e49be97733f8f8eedce1d`
     );
-     //console.log(platformsApi, 'plataformsssss')
+     console.log(platformsApi, 'plataformsssss')
     const platforms = platformsApi.data.results;
     platforms.forEach(async (p) => {
       await Platform.findOrCreate({
@@ -17,7 +17,7 @@ const getPlatforms = async (req, res) => {
       });
     });
     const platformsDb = await Platform.findAll();
-
+   // console.log(platformsDb, 'dbbbbb')
     res.status(200).json(platformsDb);
   } catch (error) {
     console.log(error);

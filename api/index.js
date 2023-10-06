@@ -49,7 +49,8 @@ conn.sync({ force: false }).then(async () => {
       // Por último, los creo en la base de datos.
       // bulkCreate ---> recibe un arreglo y crea una fila por cada uno.
       const carga = await Genre.bulkCreate(formateo);
-      console.log("Pre-carga de Genre lista !");
+      console.log(carga,"Pre-carga de Genre lista !");
+      return carga;
     }
 
     server.listen(process.env.PORT, () => {

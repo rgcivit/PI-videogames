@@ -15,10 +15,10 @@ router.get('/:id', async(req, res)=>{
     return res.json(gameDB);
     }
     const gameApi = await axios.get(
-        `https://api.rawg.io/api/games/${id}?key=${API_KEY}`
+        `https://api.rawg.io/api/games/${id}?key=1f80e4e3429e49be97733f8f8eedce1d`
     );
         res.json(gameApi.data);
-        //console.log(gameApi.data, 'hola id')
+        console.log(gameApi.data, 'hola id')
         
         } catch (err){    
         res.status(404).json({error:'id no encontrado'})

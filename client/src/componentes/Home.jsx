@@ -16,7 +16,7 @@ import SearchBar from './SearchBar';
 export default function Home (){
    const dispatch = useDispatch();
    const allVgames =useSelector((state)=> state.videogames)
-
+  
   const [currentPage, setCurrentPage]= useState(1)
    const [vgamesPerPage]= useState(15)
    const [orden, setOrden] =useState('')
@@ -24,7 +24,7 @@ export default function Home (){
    const indexOfLastVgames= currentPage * vgamesPerPage//15
    const indexOfFirstVgames = indexOfLastVgames - vgamesPerPage//0
    const currentVgames = allVgames.slice(indexOfFirstVgames, indexOfLastVgames)
-   console.log(currentVgames)
+  
    const paginado = (pageNumber) =>{
        setCurrentPage(pageNumber)
    }
@@ -75,14 +75,7 @@ return (
         </select >
         <br />
         <br />
-        <div>
-            <button className="" type='submit'>Buscar</button>
-            <input 
-            className=""
-            type="text"
-            placeholder= 'Genres Filter...' required
-            />
-        </div>
+    
         <Paginado
         vgamesPerPage = {vgamesPerPage}
         allVgames = {allVgames.length}
