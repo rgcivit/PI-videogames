@@ -68,6 +68,14 @@ function rootReducer(state= initialState, action){
                         videogames: action.payload ==='All'? state.allVideogames:createdFilter
                     }
                     
+                    case 'FILTER_GENRE':
+                        const genres = state.genres
+                        const genreFilter= action.payload === 'All'? state.genres.filter(el => el.name.createdInDb):
+                        genres.filter(el=>!el.name.createdInDb);
+                        return {
+                            ...state,
+                            genres: action.payload ===genres? state.genres:genreFilter
+                        }
                     case 'GET_NAME_VGAMES':
                         return {
                             ...state,

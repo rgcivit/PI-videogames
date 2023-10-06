@@ -35,12 +35,34 @@ export function getNameVgames (name){
     }
     }
 }
+export function getNameGenres(name){
+    return async function(dispatch){
+        try {
+            var json=await axios.get("http://localhost:3001/genres?name="+ name)
+        return dispatch({
+            type:'GET_NAME_GENRES',
+            payload:json.data
+            
+        })
+        console.log(json.data)
+    } catch (error) {
+        console.log(error)
+    }
+    }
+}
+
 export function filterCreated (payload){
     return {
         type:'FILTER_CREATED',
         payload
     }
 
+}
+export function filterGenre (payload){
+    return {
+        type:'FILTER_GENRE',
+        payload
+    }
 }
 export function getGenres(){
     return async function(dispatch){
