@@ -31,13 +31,12 @@
   "devDependencies": {
     "@vercel/node": "^3.0.7",
     "chai": "^4.2.0",
-<<<<<<< HEAD
-    "mocha": "^8.2.1",
-    "node": "^18.18.3",
-=======
+
+    
+
     "mocha": "^10.2.0",
     "node": "12.18.3",
->>>>>>> 644e08ca61bc6186416bf484633a007fcbec41d9
+
     "supertest": "^6.0.1",
     "supertest-session": "^4.1.0"
   }
