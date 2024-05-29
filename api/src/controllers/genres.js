@@ -5,10 +5,10 @@ const { Genre } = require("../db");
 const getGenres = async (req, res) => {
   try {
     const response = await axios.get(
-      `https://api.rawg.io/api/genres?key=1f80e4e3429e49be97733f8f8eedce1d`
+      `https://api.rawg.io/api/genres?key=a64a7e278a3d4682952127f9def98439`
       
     );
-    //console.log(response, 'responseeeee')
+    console.log(response, 'responseeeee')
     const genres = response.data.results;
     genres.forEach(async (g) => {
       await Genre.findOrCreate({
@@ -20,7 +20,7 @@ const getGenres = async (req, res) => {
     });
     
     const allGenres = await Genre.findAll();
-   // console.log(allGenres, 'genresssss')
+    console.log(allGenres, 'genresssss')
     
     res.status(200).json(allGenres);
   } catch (err) {

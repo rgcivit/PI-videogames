@@ -25,7 +25,7 @@ const { API_KEY } = process.env;
 
 // Syncing all the models at once.
 // Force : false ---> guarda en la DB, no reinicia al levantar de nuevo el servidor !
-conn.sync({ force: false }).then(async () => {
+conn.sync({ force: false}).then(async () => {
   // Todo lo que se haga aca, se va a realizar antes de levantar el servidor !
   // Precargar generos.
 
@@ -34,7 +34,7 @@ conn.sync({ force: false }).then(async () => {
     if(verificacion.length < 1) {   // si es menor a uno no tiene contenido.
       // Si no hay nada en e DB, pido los episodios a la API.
       // Lo cargo.
-      const pedido  = await axios.get(`https://api.rawg.io/api/genres?key=1f80e4e3429e49be97733f8f8eedce1d`);
+      const pedido  = await axios.get(`https://api.rawg.io/api/genres?key=a64a7e278a3d4682952127f9def98439`);
       // Cuando tengo los generos, los formateo.
       
       const formateo = pedido.data.results.map((gen) => {

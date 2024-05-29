@@ -5,9 +5,9 @@ const { API_KEY } = process.env;
 const getPlatforms = async (req, res) => {
   try {
     const platformsApi = await axios.get(
-      `https://api.rawg.io/api/platforms?key=1f80e4e3429e49be97733f8f8eedce1d`
+      `https://api.rawg.io/api/platforms?key=a64a7e278a3d4682952127f9def98439`
     );
-     //console.log(platformsApi, 'plataformsssss')
+     console.log(platformsApi, 'plataformsssss')
     const platforms = platformsApi.data.results;
     platforms.forEach(async (p) => {
       await Platform.findOrCreate({
@@ -17,7 +17,7 @@ const getPlatforms = async (req, res) => {
       });
     });
     const platformsDb = await Platform.findAll();
-   // console.log(platformsDb, 'dbbbbb')
+    console.log(platformsDb, 'dbbbbb')
     res.status(200).json(platformsDb);
   } catch (error) {
     console.log(error);

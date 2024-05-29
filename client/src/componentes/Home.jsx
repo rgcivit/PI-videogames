@@ -78,18 +78,10 @@ return (
             <option value="desc">Descendente</option>
             <option value="rating">Rating</option>
         </select>
-
-       
+  
         <br />
         <br />
-        <div>
-            <button className="" type='submit'>Buscar</button>
-            <input 
-            className=""
-            type="text"
-            placeholder= 'Genres Filter...' required
-            />
-        </div>
+        
         <Paginado
         vgamesPerPage = {vgamesPerPage}
         allVgames = {allVgames.length}

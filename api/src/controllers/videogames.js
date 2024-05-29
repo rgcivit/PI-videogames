@@ -11,15 +11,15 @@ try {
 
 
   
-    let gamesPageOne = axios.get(`https://api.rawg.io/api/games?key=1f80e4e3429e49be97733f8f8eedce1d`)
+    let gamesPageOne = axios.get(`https://api.rawg.io/api/games?key=a64a7e278a3d4682952127f9def98439`)
 
-    let gamesPageTwo = axios.get(`https://api.rawg.io/api/games?key=1f80e4e3429e49be97733f8f8eedce1d&page=2`)
+    let gamesPageTwo = axios.get(`https://api.rawg.io/api/games?key=a64a7e278a3d4682952127f9def98439&page=2`)
 
-    let gamesPageThree = axios.get(`https://api.rawg.io/api/games?key=1f80e4e3429e49be97733f8f8eedce1d&page=3`)
+    let gamesPageThree = axios.get(`https://api.rawg.io/api/games?key=a64a7e278a3d4682952127f9def98439&page=3`)
 
-    let gamesPageFour = axios.get(`https://api.rawg.io/api/games?key=1f80e4e3429e49be97733f8f8eedce1d&page=4`)
+    let gamesPageFour = axios.get(`https://api.rawg.io/api/games?key=a64a7e278a3d4682952127f9def98439&page=4`)
 
-    let gamesPageFive = axios.get(`https://api.rawg.io/api/games?key=1f80e4e3429e49be97733f8f8eedce1d&page=5`)
+    let gamesPageFive = axios.get(`https://api.rawg.io/api/games?key=a64a7e278a3d4682952127f9def98439&page=5`)
 
     
 
@@ -31,7 +31,7 @@ try {
     gamesPageFour = prom[3].data.results;
     gamesPageFive = prom[4].data.results;
   
-
+   
     let apiInfo= gamesPageOne.concat(gamesPageTwo).concat(gamesPageThree).concat(gamesPageFour).concat(gamesPageFive)
     apiInfo = apiInfo.map((results) => {
             return {
@@ -46,7 +46,7 @@ try {
             }      
         })
         
-        //console.log(apiInfo, 'hola!!!!')
+        console.log(apiInfo, 'hola!!!!')
     return apiInfo;
   } catch (error) {
     console.log(error)
@@ -77,15 +77,15 @@ const getAllVgames = async ()=>{
     const apiInfo = await getApiInfo();
     const  dbInfo = await getDbInfo();
     const infoTotal = apiInfo.concat(dbInfo);
-   // console.log(infoTotal, 'info total!!!')
+    console.log(infoTotal, 'info total!!!')
     return infoTotal;
   } catch (error) {
     console.log(error)
   }
   }
 
-
-module.exports={
+  
+  module.exports={
     getAllVgames,
     getApiInfo,
     getDbInfo,
